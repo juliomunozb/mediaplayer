@@ -1,0 +1,40 @@
+body {
+  margin: 0px;
+  font-family: "Mulish", sans-serif;
+  font-size: 16px;
+  font-size: 1rem;
+  line-height: 1.5rem;
+}
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  background-color: #24bee3;
+}
+
+.main {
+  padding: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+.controls {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.controls__button--play-pause {
+  width: 25%;
+  height: 50px;
+  border-radius: 10px;
+  border: none;
+  font-family: "Mulish", sans-serif;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 1px;
+  cursor: pointer;
+  background-color: #24bee3;
+  color: white;
+}
