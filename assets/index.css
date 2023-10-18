@@ -25,9 +25,10 @@ body {
   justify-content: center;
 }
 
-.controls__button--play-pause {
+.button {
   width: 25%;
   height: 50px;
+  margin: 10px;
   border-radius: 10px;
   border: none;
   font-family: "Mulish", sans-serif;
