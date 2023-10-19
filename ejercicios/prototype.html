@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prototype</title>
+  </head>
+  <body>
+    <a href="./index.html">Go back</a>
+    <h1>Prototype</h1>
+    <script>
+      //un objeto comun y corriente
+      /*const zelda = {
+        name: "Zelda",
+      };
+      zelda.saludar = function () {
+        console.log(`Hola soy ${this.name}`);
+      };
+      zelda.saludar();
+
+      const link = {
+        name: "Link",
+      };
+      link.saludar = function () {
+        console.log(`Hola soy ${this.name}`);
+      };
+      link.saludar();
+      */
+      //Seamos un poco más específicos
+      /*function Hero(name) {
+        const hero = {
+          name: name,
+        };
+
+        hero.saludar = function () {
+          console.log(`Hola soy ${this.name}`);
+        };
+        return hero;
+      }
+
+      const zelda = Hero("Zelda");
+      zelda.saludar();
+      const link = Hero("Link");
+      link.saludar();
+      */
+      //Aun podemos mejorar mas y evitar tener la misma función varios veces
+      /*const heroMethods = {
+        saludar: function () {
+          console.log(`Hola soy ${this.name}`);
+        },
+      };
+
+      function Hero(name) {
+        const hero = {
+          name: name,
+        };
+
+        hero.saludar = heroMethods.saludar;
+        return hero;
+      }
+
+      const zelda = Hero("Zelda");
+      zelda.saludar();
+      const link = Hero("Link");
+      link.saludar();
+      */
+
+      //Objet.create
+      /*const heroMethods = {
+       saludar: function () {
+         console.log(`Hola soy ${this.name}`);
+        },
+      };
+      
+      function Hero(name) {
+        //Object.create:  es un método estático que se utiliza para crear un nuevo objeto con un objeto existente como prototipo.
+        const hero = Object.create(heroMethods);
+        hero.name = name;
+        return hero;
+      }
+      
+      const zelda = Hero("Zelda");
+      zelda.saludar();
+      const link = Hero("Link");
+      link.saludar();*/
+      //Los métodos de Hero dentro de Hero
+      /*
+      function Hero(name) {
+        //Object.create:  es un método estático que se utiliza para crear un nuevo objeto con un objeto existente como prototipo.
+        const hero = Object.create(Hero.prototype);
+        hero.name = name;
+        return hero;
+      }
+
+      Hero.prototype.saludar = function () {
+        console.log(`Hola soy ${this.name}`);
+      };
+
+      const zelda = Hero("Zelda");
+      zelda.saludar();
+      const link = Hero("Link");
+      link.saludar();
+      */
+      //new es un atajo (azucar sintáctica) parar llevar Hero.prototype al objeto
+      function Hero(name) {
+        //Cuando se hace el llamado a new cuando se instancia el objeto es como si se ejecvutara Object.create
+        this.name = name;
+        //return this ya lo hace implicitamente el lenguaje
+      }
+
+      Hero.prototype.saludar = function () {
+        console.log(`Hola soy ${this.name}`);
+      };
+      //new es un helper, azucar sintáctico para Object.create
+      const zelda = new Hero("Zelda");
+      zelda.saludar();
+      const link = new Hero("Link");
+      link.saludar();
+    </script>
+  </body>
+</html>
