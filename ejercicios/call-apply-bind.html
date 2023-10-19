@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Call - Apply - Bind</title>
+  </head>
+  <body>
+    <a href="./index.html">Go back</a>
+    <h1>
+      function.prototype.call - function.prototype.apply -
+      function.prototype.bind
+    </h1>
+    <ul>
+      <li><button class="call-to-action">Aprender</button></li>
+      <li><button class="call-to-action">Aprender más</button></li>
+      <li><button class="call-to-action">¡Nunca parar de Aprender!</button></li>
+    </ul>
+
+    <script>
+      //Establece `this` usando `call`
+      function saludar() {
+        console.log(`Hola. Soy ${this.name} ${this.apellido}`);
+      }
+
+      const pedro = {
+        name: "Pedro",
+        apellido: "Henandez",
+      };
+      //pasamos el this que en este caso seria el objeto pedro
+      saludar.call(pedro);
+
+      //Establece `this` usando `call` y pasando argumento a la función
+      function caminar(metros, direccion) {
+        console.log(`${this.name} camina ${metros} metros hacia ${direccion}`);
+      }
+      caminar.call(pedro, 400, "norte");
+
+      //Establece `this` usando `apply` y pasando argumento a la función
+      const valores = [800, "sur"];
+      caminar.apply(pedro, valores); //En apply los argumentos se pasan como un array
+
+      //Establece `this` en una nueva función usando `bind`
+      const daniel = {
+        name: "Daniel",
+        apellido: "Mendez",
+      };
+      const danielSaluda = saludar.bind(daniel); //Bind crea una nueva funcion
+      danielSaluda();
+
+      const danielCamina = caminar.bind(daniel, 300, "Oriente"); //se puede pasar algunos o todos los argumentos, esta tecnica se llama curi
+      danielCamina();
+
+      const danielCaminar = caminar.bind(daniel, 200); //se puede pasar algunos o todos los argumentos, esta tecnica se llama curi
+      danielCaminar("Occidente");
+
+      //Cuando es útil usar uno de esos métodos
+      const buttons = document.getElementsByClassName("call-to-action");
+      /*
+        buttons no es una funcion se generaré TypeError: buttons.forEach is not a function
+        buttons is un NodeList -> no son propiamente arreglos, pero tiene la propiedad length que es suficiente para hacer alguna de las propiedades de arreglos
+        */
+      /*buttons.forEach((button) => {
+        button.onclick = () => alert("Nunca pares de aprender");
+      });*/
+
+      /*Llama a forEach a través del Array y cambiar el This*/
+      Array.prototype.forEach.call(buttons, (button) => {
+        button.onclick = () => alert("Nunca pares de aprender");
+      });
+    </script>
+  </body>
+</html>
