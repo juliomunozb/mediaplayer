@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Prototype Inheritance</title>
+  </head>
+  <body>
+    <a href="./index.html">Go back</a>
+    <h1>Prototype Inheritance</h1>
+    <script>
+      function Hero(name) {
+        this.name = name;
+      }
+
+      Hero.prototype.saludar = function () {
+        console.log(`Hola soy ${this.name}`);
+      };
+
+      const zelda = new Hero("Zelda");
+      //Propiedades de la instancia
+      console.log("Name:", zelda.name);
+      //Propiedades de la clase
+      console.log("Saludar:", zelda.saludar);
+      //Propiedades heredades ej: toString
+      console.log("toString:", zelda.toString);
+      //hasOwnProperty (De donda sale toString?)
+      /*
+        hasOwnProperty método se utiliza para comprobar si una propiedad especificada es una propiedad directa de un objeto.
+      */
+      console.log(
+        "zelda.hasOwnProperty('name'):",
+        zelda.hasOwnProperty("name")
+      );
+      //Inspeccionemos el prototype zelta
+      //Inspeccionemos el prototype hero
+      //Inspeccionemos el prototype Object
+    </script>
+  </body>
+</html>
