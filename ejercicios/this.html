@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>This</title>
+  </head>
+  <body>
+    <a href="./index.html">Go back</a>
+    <h1>This</h1>
+    <script>
+      //This en el scope global
+      //console.log(`This: ${this}`);
+      //This en el scope de una funcion
+      /*function whoIsThis() {
+        return this;
+      }
+      console.log(`whoIsThis: ${whoIsThis()}`);*/
+      //This en el scope de una funcion en strict mode
+      /* function whoIsThisStrict() {
+        "use strict";
+        return this;
+      }
+      console.log(`whoIsThisStrict: ${whoIsThisStrict()}`);*/
+
+      //This cuando sacamos una funcion de un objeto
+      /*const person = {
+        name: "Gabriel",
+        saludar: function () {
+          console.log(`Hola soy ${this.name}`);
+        },
+      };
+
+      person.saludar();
+      //el scope de name ya no estará disponible por que esta fuera del conexto del objeto al invocar la función saludar en la varible acción
+      const accion = person.saludar;
+      accion();*/
+      //This en el contenido de una clase
+      /*
+      Definiciendo de clase
+      Actua como un constructor
+      La primera letra en mayusculas
+      */
+      function Persona(name) {
+        this.name = name;
+      }
+
+      /*creando médotos através de prototype*/
+      Persona.prototype.saludar = function () {
+        console.log(`Hola soy ${this.name}`);
+      };
+      /*
+      Instanciamos el objeto
+      This, se va a referir a la instancia no sobre el objeto prototipal
+      */
+      const angela = new Persona("Angela");
+      angela.saludar();
+    </script>
+  </body>
+</html>
