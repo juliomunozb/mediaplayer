@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fech</title>
+  </head>
+  <body>
+    <a href="./index.html">Go back</a>
+    <h1>Fech - Cómo cancelar peticiones</h1>
+    <img id="huge-image" height="400" />
+    <div>
+      <button id="load">Load HUGE Image</button>
+      <button id="stop" disabled>Stop Fetching</button>
+    </div>
+    <script>
+      const url =
+        "https://images.pexels.com/photos/974470/nature-stars-milky-way-galaxy-974470.jpeg?q=100";
+      const img = document.getElementById("huge-image");
+      const loadButton = document.getElementById("load");
+      const stopButton = document.getElementById("stop");
+      let controller;
+
+      function startLoading() {
+        loadButton.disabled = true;
+        loadButton.innerText = "Loadgin...";
+        stopButton.disabled = false;
+      }
+
+      function stopLoading() {
+        loadButton.disabled = false;
+        loadButton.innerText = "Load HUGE Image";
+        stopButton.disabled = true;
+      }
+
+      loadButton.onclick = async function () {
+        startLoading();
+        try {
+          controller = new AbortController(); //tiene los controles para detener una ejecución
+          const response = await fetch(url, { signal: controller.signal });
+          const blob = await response.blob(); // retorna el binario de la imagen
+          const imgUrl = URL.createObjectURL(blob); //Convertir Binario a una url
+          img.src = imgUrl;
+        } catch (error) {
+          console.log(error.message);
+        }
+        stopLoading();
+      };
+
+      stopButton.onclick = async function () {
+        controller.abort(); //Se detiene la ejecución
+        stopLoading();
+      };
+    </script>
+  </body>
+</html>
