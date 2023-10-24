@@ -3,6 +3,7 @@ class AutoPause {
     this.threshold = 0.25;
     //Se establece el this permanentamente en la instancia del objeto
     this.handlerInterseccion = this.handlerInterseccion.bind(this);
+    this.handlerVisibilityChange = this.handlerVisibilityChange.bind(this);
   }
   run(player) {
     this.player = player;
@@ -20,11 +21,21 @@ class AutoPause {
       threshold: this.threshold,
     });
     observer.observe(this.player.media);
+    document.addEventListener("visibilitychange", this.handlerVisibilityChange);
   }
 
   handlerInterseccion(entries) {
     const entry = entries[0];
     const isVisible = entry.intersectionRatio >= this.threshold;
+    if (isVisible) {
+      this.player.play();
+    } else {
+      this.player.pause();
+    }
+  }
+
+  handlerVisibilityChange() {
+    const isVisible = document.visibilityState === "visible";
     if (isVisible) {
       this.player.play();
     } else {
