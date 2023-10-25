@@ -1,3 +1,4 @@
+/** Tipos básicos **/
 //Boolean
 let muted: boolean = true;
 muted = false;
@@ -74,3 +75,30 @@ const juan = fullName("Juan", "Gomez");
 const miguel = fullName("Miguel");
 console.log(`Hola ${juan}`);
 console.log(`Hola ${miguel}`);
+
+/** Interfaces **/
+//Definen la forma exacta que debe tener un objeto
+// No se pueden agregar propiedades o quitar
+interface Rectangulo {
+  ancho: number;
+  alto: number;
+  color?: Color;
+}
+
+let rect: Rectangulo = {
+  ancho: 4,
+  alto: 6,
+  color: Color.Rojo,
+};
+
+function are(r: Rectangulo) {
+  return r.alto * r.ancho;
+}
+
+const areRect = are(rect);
+console.log(`Area rectacgulo: ${areRect}`);
+
+rect.toString = function () {
+  return this.color ? `Un restangulo ${this.color}` : "Un rectangulo";
+};
+console.log(rect.toString());
