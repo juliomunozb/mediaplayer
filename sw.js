@@ -39,15 +39,16 @@ async function precache() {
   //Abir cache. Instancia de cache.
   const cache = await caches.open(VERSION);
   //se añaden los recursos
+  //Como se esta usando parse los recursos quedan en la carpeta dist con otros nombres por eso se comentarean las lineas
   return cache.addAll([
-    "./",
+    /* "./",
     "./index.html",
     "./assets/index.js",
     "./assets/MediaPlayer.js",
     "./assets/plugins/AutoPlay.js",
     "./assets/plugins/AutoPause.js",
     "./assets/index.css",
-    "./assets/video.mp4",
+    "./assets/video.mp4",*/
   ]);
 }
 
