@@ -36,3 +36,41 @@ console.log(`Mi color favorito es: ${colorFavorito}`);
 //Any
 let comodin: any = "Joker";
 comodin = { type: "Pepe" };
+
+/** Funciones **/
+/*
+  Se puede indicar el tipo de dato en argumentos 
+  Se puede indicar el tipo de dato de retorno de la función
+*/
+
+//Retornando un valor
+function add(a: number, b: number): number {
+  return a + b;
+}
+
+const sum = add(4, 6);
+console.log(`Suma: ${sum}`);
+
+//Retornando una función
+//: (number) => number -> esta indicando el valor de retorno cuando retorna una función
+function createAdder(a: number): (number) => number {
+  return function (b: number) {
+    return b + a;
+  };
+}
+
+const addFour = createAdder(4);
+const fourPlus6 = addFour(5);
+console.log(`Suma: ${fourPlus6}`);
+
+//Con argumentos opcionales
+// lasName?: -> para indicar que un argumento es opcoinal se incluye el signo ? al final de la varible
+//lasName?:string = "Lopez" -> para incluir valor por defecto
+function fullName(firstName: string, lastName: string = "Lopez"): string {
+  return `${firstName} ${lastName}`;
+}
+
+const juan = fullName("Juan", "Gomez");
+const miguel = fullName("Miguel");
+console.log(`Hola ${juan}`);
+console.log(`Hola ${miguel}`);
