@@ -1,24 +1,15 @@
 //Reescribir a Clase, usar la palabra Class para que typescript lo reconozca como un tipo
 class MediaPlayer {
+  media: HTMLMediaElement; //Etiqueta video en HTML, ese elemento representa a un HTMLVideoElement y hereda de HTMLMediaElement (tipo nativo de HTML, no se de importar solo se llama)
+  plugins: Array<any>;
   constructor(config) {
     this.media = config.el;
     this.plugins = config.plugins || []; //MediaPlayer debe funcionar con o sin plugins
-    this._initPlugins();
+    this.initPlugins();
   }
-  _initPlugins() {
-    const player = {
-      play: () => this.play(),
-      pause: () => this.pause(),
-      media: this.media,
-      get muted() {
-        return this.media.muted;
-      },
-      set muted(value) {
-        this.media.muted = value;
-      },
-    };
+  private initPlugins() {
     this.plugins.forEach((plugin) => {
-      plugin.run(player);
+      plugin.run(this);
     });
   }
   play() {

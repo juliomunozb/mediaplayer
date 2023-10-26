@@ -1,18 +1,18 @@
-import MediaPlayer from "./MediaPlayer.js";
-import AutoPlay from "./plugins/AutoPlay.js";
-import AutoPause from "./plugins/AutoPause.ts";
+import MediaPlayer from "./MediaPlayer";
+import AutoPlay from "./plugins/AutoPlay";
+import AutoPause from "./plugins/AutoPause";
 
 const video = document.querySelector("video");
 const buttonsControl = document.querySelectorAll("button");
-const buttonPlayPause = buttonsControl[0];
-const buttonmuteUnmute = buttonsControl[1];
+const playPauseButton: HTMLElement = buttonsControl[0];
+const muteUnmuteButton: HTMLElement = buttonsControl[1];
 
 const player = new MediaPlayer({
   el: video,
   plugins: [new AutoPlay(), new AutoPause()],
 });
-buttonPlayPause.onclick = () => player.togglePlay();
-buttonmuteUnmute.onclick = () => player.toggleMute();
+playPauseButton.onclick = () => player.togglePlay();
+muteUnmuteButton.onclick = () => player.toggleMute();
 
 //Detectar si el navegador soportado serviceworkers
 if ("serviceWorker" in navigator) {
