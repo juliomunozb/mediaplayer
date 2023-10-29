@@ -2,10 +2,18 @@
 class MediaPlayer {
   media: HTMLMediaElement; //Etiqueta video en HTML, ese elemento representa a un HTMLVideoElement y hereda de HTMLMediaElement (tipo nativo de HTML, no se de importar solo se llama)
   plugins: Array<any>;
+  container: HTMLElement;
   constructor(config) {
     this.media = config.el;
     this.plugins = config.plugins || []; //MediaPlayer debe funcionar con o sin plugins
+    this.initPlayer();
     this.initPlugins();
+  }
+  private initPlayer() {
+    this.container = document.createElement("div");
+    this.container.style.position = "relative";
+    this.media.parentNode!.insertBefore(this.container, this.media);
+    this.container.appendChild(this.media);
   }
   private initPlugins() {
     this.plugins.forEach((plugin) => {
