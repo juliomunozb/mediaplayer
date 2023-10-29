@@ -1,6 +1,7 @@
 import MediaPlayer from "./MediaPlayer";
 import AutoPlay from "./plugins/AutoPlay";
 import AutoPause from "./plugins/AutoPause";
+import AdsPlugin from "./plugins/Ads/index";
 
 const video = document.querySelector("video");
 const buttonsControl = document.querySelectorAll("button");
@@ -9,7 +10,7 @@ const muteUnmuteButton: HTMLElement = buttonsControl[1];
 
 const player = new MediaPlayer({
   el: video,
-  plugins: [new AutoPlay(), new AutoPause()],
+  plugins: [new AutoPlay(), new AutoPause(), new AdsPlugin()],
 });
 playPauseButton.onclick = () => player.togglePlay();
 muteUnmuteButton.onclick = () => player.toggleMute();
