@@ -1,0 +1,19 @@
+{
+  "name": "juliomunozb-mediaplayer",
+  "version": "1.0.1",
+  "description": "",
+  "main": "lib/MediaPlayer.js",
+  "scripts": {
+    "build": "tsc src/**/*.ts src/plugins/*.ts src/plugins/**/*.ts --outDir lib",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "Javascritp",
+    "TypeScript"
+  ],
+  "author": "Julilo Munoz",
+  "license": "ISC",
+  "devDependencies": {
+    "typescript": "^5.2.2"
+  }
+}

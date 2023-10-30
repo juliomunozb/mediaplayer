@@ -22,8 +22,6 @@ class AdsPlugin {
 
   private handleTimeUpdate() {
     const currentTime = Math.floor(this.media.currentTime); //Convertir valor decimal a entero
-    console.log("Time;", Math.floor(this.media.currentTime));
-
     if (currentTime % 30 === 0) {
       this.renderAd();
     }
@@ -51,8 +49,6 @@ class AdsPlugin {
 
     setTimeout(() => {
       this.currentAd = null;
-      console.log("setimeout", this.currentAd);
-
       this.adsContainer.innerHTML = "";
     }, 10000);
   }

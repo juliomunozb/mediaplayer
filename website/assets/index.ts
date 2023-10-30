@@ -1,7 +1,7 @@
-import MediaPlayer from "./MediaPlayer";
-import AutoPlay from "./plugins/AutoPlay";
-import AutoPause from "./plugins/AutoPause";
-import AdsPlugin from "./plugins/Ads/index";
+import MediaPlayer from "juliomunozb-mediaplayer";
+import AutoPlay from "juliomunozb-mediaplayer/lib/plugins/AutoPlay";
+import AutoPause from "juliomunozb-mediaplayer/lib/plugins/AutoPause";
+import AdsPlugin from "juliomunozb-mediaplayer/lib/plugins/Ads/index";
 
 const video = document.querySelector("video");
 const buttonsControl = document.querySelectorAll("button");
